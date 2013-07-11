@@ -9,7 +9,7 @@ define(['clock', 'digitalclockbutton'], function(Clock, DigitalClockButton) {
 
         ctor:function() {
             this._super();
-            this.initWithFile(bl.resources['images_clock_digital_bg']);
+            this.initWithFile(window.bl.getResource('digital_bg'));
             this.setupDigits();
             this.setupColon();
             this.setupPmIndicator();
@@ -21,7 +21,7 @@ define(['clock', 'digitalclockbutton'], function(Clock, DigitalClockButton) {
             this.digits = [];
             for (var i = 0; i < 4; i++) {
                 var digit = new cc.Sprite();
-                digit.initWithFile(bl.resources['images_clock_digits_0']);
+                digit.initWithFile(window.bl.getResource('digits_0'));
                 this.digits.push(digit);
                 this.addChild(digit);
             }
@@ -34,7 +34,7 @@ define(['clock', 'digitalclockbutton'], function(Clock, DigitalClockButton) {
 
         setupColon:function() {
             var colon = new cc.Sprite();
-            colon.initWithFile(bl.resources['images_clock_digits_colon']);
+            colon.initWithFile(window.bl.getResource('digits_colon'));
             colon.setPosition(220, 80);
             this.addChild(colon);
             var blinkOnce = cc.Blink.create(2, 1);
@@ -44,7 +44,7 @@ define(['clock', 'digitalclockbutton'], function(Clock, DigitalClockButton) {
 
         setupPmIndicator:function() {
             this.pmIndicator = new cc.Sprite();
-            this.pmIndicator.initWithFile(bl.resources['images_clock_pm']);
+            this.pmIndicator.initWithFile(window.bl.getResource('pm'));
             this.pmIndicator.setPosition(cc.p(407, 125));
             this.pmIndicator.setScale(0.5);
             this.addChild(this.pmIndicator);
@@ -64,7 +64,7 @@ define(['clock', 'digitalclockbutton'], function(Clock, DigitalClockButton) {
 
         setupButton:function(positionX, positionY, changeHour, changeBy) {
             var button = new cc.Sprite();
-            var filename = changeBy > 0 ? bl.resources['images_clock_arrow_up'] : bl.resources['images_clock_arrow_down'];
+            var filename = changeBy > 0 ? window.bl.getResource('arrow_up') : window.bl.getResource('arrow_down');
             button.initWithFile(filename);
             button.setPosition(positionX, positionY);
             button.changeHour = changeHour;
@@ -103,9 +103,9 @@ define(['clock', 'digitalclockbutton'], function(Clock, DigitalClockButton) {
             } else {
                 this.pmIndicator.setVisible(true);
                 if (this.time.hours >= 12) {
-                    this.pmIndicator.setTextureWithFilename(bl.resources['images_clock_pm']);
+                    this.pmIndicator.setTextureWithFilename(window.bl.getResource('pm'));
                 } else {
-                    this.pmIndicator.setTextureWithFilename(bl.resources['images_clock_am']);
+                    this.pmIndicator.setTextureWithFilename(window.bl.getResource('am'));
                 };
             };
         },
@@ -113,7 +113,7 @@ define(['clock', 'digitalclockbutton'], function(Clock, DigitalClockButton) {
         setDigit:function(position, digit) {
             var digitSprite = this.digits[position - 1];
             digitSprite.setVisible(true);
-            digitSprite.setTextureWithFilename(bl.resources['images_clock_digits_' + digit]);
+            digitSprite.setTextureWithFilename(window.bl.getResource('digits_' + digit));
         },
 
         setBlankDigit:function(position) {

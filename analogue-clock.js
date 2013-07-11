@@ -13,7 +13,7 @@ define (['clock', 'hand', 'constants'], function(Clock, Hand, constants) {
         ctor:function() {
             this._super();
 
-            this.initWithFile(bl.resources['images_clock_clock_face']);
+            this.initWithFile(window.bl.getResource('clock_face'));
 
             var clockSize = this.getContentSize();
             this.clockCentre = cc.p(clockSize.width * 0.5, clockSize.height * 0.51);
@@ -25,7 +25,7 @@ define (['clock', 'hand', 'constants'], function(Clock, Hand, constants) {
 
         setupNumbers:function() {
             this.numbers = new cc.Sprite();
-            this.numbers.initWithFile(bl.resources['images_clock_clock_numbers_all']);
+            this.numbers.initWithFile(window.bl.getResource('clock_numbers_all'));
             this.numbers.setPosition(this.clockCentre);
             this.addChild(this.numbers);
         },
@@ -38,7 +38,7 @@ define (['clock', 'hand', 'constants'], function(Clock, Hand, constants) {
             var upperRadius = this.getContentSize().width/2 + 35;
             for (var i = 1; i <= 12; i++) {
                 var card = new cc.Sprite();
-                card.initWithFile(bl.resources['images_clock_clock_cards_clock_card_' + i]);
+                card.initWithFile(window.bl.getResource('clock_cards_clock_card_' + i));
                 card.setPosition(upperRadius * Math.sin(2 * Math.PI * i/12), lowerRadius * Math.cos(2 * Math.PI * i/12));
                 this.wordNode.addChild(card);
             };
@@ -64,7 +64,7 @@ define (['clock', 'hand', 'constants'], function(Clock, Hand, constants) {
             };
 
             var clockfacePin = new cc.Sprite();
-            clockfacePin.initWithFile(bl.resources['images_clock_clock_centre_pin']);
+            clockfacePin.initWithFile(window.bl.getResource('clock_centre_pin'));
             clockfacePin.setPosition(this.clockCentre);
             clockfacePin.setAnchorPoint(cc.p(0.5, 0.5));
             clockfacePin.setZOrder(2);
