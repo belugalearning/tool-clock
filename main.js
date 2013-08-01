@@ -44,11 +44,6 @@ define(['exports', 'cocos2d', 'toollayer', 'qlayer', 'constants', 'clock', 'anal
             clc.addChild(background);
             this.addChild(clc,0);
 
-            var title = new cc.Sprite();
-            title.initWithFile(window.bl.getResource('title'));
-            title.setPosition(this.size.width/2, 700);
-            this.addChild(title);
-
             this.clocks = [];
 
             this.analogueClock = new AnalogueClock();
@@ -272,10 +267,10 @@ define(['exports', 'cocos2d', 'toollayer', 'qlayer', 'constants', 'clock', 'anal
         },
 
         positionClocks:function() {
-            var centrePosition = cc.p(this.size.width/2, this.size.height/2 - 50);
-            var leftPosition = cc.p(this.size.width * 0.29, this.size.height/2 - 50);
-            var rightPosition = cc.p(this.size.width * 0.74, this.size.height/2 - 50);
-            var veryRightPosition = cc.p(this.size.width * 0.79, this.size.height/2 - 50);
+            var centrePosition = cc.p(this.size.width/2, this.size.height/2);
+            var leftPosition = cc.p(this.size.width * 0.29, this.size.height/2);
+            var rightPosition = cc.p(this.size.width * 0.74, this.size.height/2);
+            var veryRightPosition = cc.p(this.size.width * 0.79, this.size.height/2);
 
             var analogueVisible = this.analogueClock.isVisible();
             var digitalVisible = this.digitalClock.isVisible();
